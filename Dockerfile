@@ -30,10 +30,11 @@ RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 RUN apt-get clean all
 
 # Set environment variables.
+ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME /home/docker
 
 # Define working directory.
 WORKDIR /home/docker/phoenixminer
 
 # Define default command.
-CMD ["./PhoenixMiner -pool ${POOL} -wal ${WALLET_ADDRESS}.${PASSWORD}"]
+CMD ["PhoenixMiner -pool stratum+tcp://daggerhashimoto.usa-west.nicehash.com:3353 -wal 3QGJuiEBVHcHkHQMXWY4KZm63vx1dEjDpL.Unraid"]
