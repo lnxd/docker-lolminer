@@ -37,4 +37,5 @@ ENV HOME /home/docker
 WORKDIR /home/docker/phoenixminer
 
 # Define default command.
-CMD ["PhoenixMiner -pool stratum+tcp://daggerhashimoto.usa-west.nicehash.com:3353 -wal 3QGJuiEBVHcHkHQMXWY4KZm63vx1dEjDpL.Unraid"]
+CMD ["./PhoenixMiner"]
+#CMD ["./PhoenixMiner -pool ${POOL} -wal ${WALLET_ADDRESS}.${PASSWORD}"]
