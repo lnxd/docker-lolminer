@@ -36,4 +36,4 @@ ENV HOME /home/docker
 WORKDIR /home/docker
 
 # Define default command.
-CMD ["bash"]
+CMD ["sh /home/docker/phoenixminer/start_miner.sh"]
