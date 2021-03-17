@@ -21,10 +21,10 @@ RUN usermod -aG sudo docker
 RUN mkdir /home/docker
 
 # Get Phoenix Miner
-RUN mkdir /home/docker/phoenixminer
 RUN wget "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.4c/PhoenixMiner_5.4c_Linux.tar.gz"
-RUN tar xvzf PhoenixMiner_5.4c_Linux.tar.gz -C /home/docker/phoenixminer
-RUN rm "PhoenixMiner_5.4c_Linux.tar.gz"
+RUN tar xvzf PhoenixMiner_5.4c_Linux.tar.gz -C /home/docker
+RUN mv "/home/docker/PhoenixMiner_5.4c_Linux" "/home/docker/phoenixminer"
+RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 
 # Clean up apt
 RUN apt-get clean all
@@ -33,7 +33,7 @@ RUN apt-get clean all
 ENV HOME /home/docker
 
 # Define working directory.
-WORKDIR /home/docker
+WORKDIR /home/docker/phoenixminer
 
 # Define default command.
-CMD ["sh /home/docker/phoenixminer/start_miner.sh"]
+CMD ["./PhoenixMiner"]
