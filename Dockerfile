@@ -34,7 +34,7 @@ RUN echo AMD_DRIVER is $AMD_DRIVER; \
     rm -rf /tmp/opencl-driver-amd;
 
 # Get Phoenix Miner
-RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.5c/PhoenixMiner_5.5c_Linux.tar.gz" -O PhoenixMiner_5.5c_Linux.tar.gz
+RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.5c/PhoenixMiner_5.5c_Linux.tar.gz" --output PhoenixMiner_5.5c_Linux.tar.gz
 RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
 RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
 RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
