@@ -36,4 +36,4 @@ ENV HOME /home/docker
 WORKDIR /home/docker/phoenixminer
 
 # Define default command.
-CMD ["./PhoenixMiner"]
+CMD ["./PhoenixMiner -pool ${POOL} -wal ${WALLET_ADDRESS}.${PASSWORD}"]
