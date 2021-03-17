@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y wget sudo
+RUN apt-get install -y wget sudo libpci-dev
 
 # Set timezone
 RUN ln -fs /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
