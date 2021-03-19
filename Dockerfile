@@ -40,16 +40,26 @@ RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
 RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
 RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 
+# Download mine.sh
+RUN wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/main/mine.sh" -O "/home/docker/mine.sh"
+RUN sudo chmod +x /home/docker/mine.sh
+
 # Clean up apt
 RUN apt-get clean all
 
 # Set environment variables.
 ENV PATH=$PATH:/home/docker/phoenixminer
-ENV HOME /home/docker
+ENV HOME="/home/docker"
+ENV POOL="asia1.ethermine.org:4444"
+ENV WALLET="0xe037C6245910EbBbA720514835d31B385D76927f"
+ENV PASSWORD="x"
+ENV TT="56"
+ENV TSTOP="85"
+ENV TSTART="80"
+ENV ADDITIONAL=" "
 
 # Define working directory.
-WORKDIR /home/docker/phoenixminer
+WORKDIR /home/docker/
 
 # Define default command.
-CMD ["ls"]
-#CMD ["./PhoenixMiner -pool ${POOL} -wal ${WALLET_ADDRESS}.${PASSWORD}"]
+CMD ["./mine.sh"]
