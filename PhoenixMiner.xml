@@ -78,5 +78,5 @@
   <Config Name="Safety: Stop Temperature" Target="TSTOP" Default="85" Mode="" Description="PhoenixMiner will pause mining on a GPU if it hits this temperature (only works if privileged mode is enabled)" Type="Variable" Display="always" Required="false" Mask="false">85</Config>
   <Config Name="Safety: Resume Temperature" Target="TSTART" Default="80" Mode="" Description="PhoenixMiner will resume mining on a GPU if it hits this temperature after being paused (only works if privileged mode is enabled)" Type="Variable" Display="always" Required="false" Mask="false">80</Config>
   <Config Name="Additional PhoenixMiner Arguments" Target="ADDITIONAL" Default="-amd" Mode="" Description="Additional PhoenixMiner arguments" Type="Variable" Display="always" Required="false" Mask="false">-amd </Config>
-  <Config Name="/dev/dri:/dev/dri" Target="" Default="" Mode="" Description="GPU passthrough from host to container. This Isn't necessary if privileged mode is enabled, but won't hurt." Type="Device" Display="always" Required="false" Mask="false">/dev/dri:/dev/dri</Config>
+  <Config Name="GPU Device" Target="" Default="" Mode="" Description="GPU passthrough from host to container. This Isn't necessary if privileged mode is enabled, but won't hurt." Type="Device" Display="always" Required="false" Mask="false">/dev/dri:/dev/dri</Config>
 </Container>
