@@ -40,11 +40,12 @@ RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
 RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
 RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 
-# Download mine.sh
-RUN wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/main/mine.sh" -O "/home/docker/mine.sh"
+# Download latest mine.sh
+RUN wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/1fb1e180e7d0821642992cbe9fa394473961b521/mine.sh" -O "/home/docker/mine.sh"
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Clean up apt
+RUN apt-get purge curl wget
 RUN apt-get clean all
 
 # Set environment variables.
