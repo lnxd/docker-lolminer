@@ -45,7 +45,7 @@ RUN wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/1fb1e180e7d
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Clean up apt
-RUN apt-get purge curl wget
+RUN apt-get purge curl wget -y
 RUN apt-get clean all
 
 # Set environment variables.
