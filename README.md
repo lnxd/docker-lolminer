@@ -32,10 +32,11 @@ This container was written to be run on Unraid, so the following instructions ap
 6. Visit the Docker tab via the Unraid UI and press "Add Container", select "PhoenixMiner-lnxd" from the list and customise it. Make sure you update the variables otherwise your server will be mining for me instead.
 7. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
 <details>
-  <summary>If you don't want to enable privileged mode</summary>
+  <summary>7.1. If you don't want to enable privileged mode</summary>
   
   Make sure you have `Dynamix System Autofan` installed (can be done via CA). I recommend enabling it and setting the high temperature to 25c at most. Low I set to 20. It was not able to get the PWM min speed but this didn't affect anything for me during testing.
 </details>
+
 8. Run it, check the logs constantly for the first 20 mins or so to ensure it is working and your card doesn't overheat. If something looks bad, stop the container and double check your config. I like to ensure my 5500XT stays around 75c, and my RX 580 stays around 55c (modded bios)
 
 Lots of steps for now, this might get easier in the future if it gets accepted for CA, but for now if you don't feel confident completing the above steps it's probably best if you don't try, otherwise you might damage your system (with heat).
