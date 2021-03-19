@@ -11,7 +11,7 @@
   <Project/>
   <Overview>Phoenixminer containerised with AMD GPUs and Unraid in mind. Contains AMD drivers.</Overview>
   <Category/>
-  <WebUI>http://[IP]:[PORT]</WebUI>
+  <WebUI>http://[IP]:[PORT:5450]</WebUI>
   <TemplateURL/>
   <Icon>https://raw.githubusercontent.com/lnxd/docker-phoenixminer/main/phoenixminer-logo.png</Icon>
   <ExtraParams/>
