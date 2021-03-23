@@ -17,8 +17,8 @@ This container was written to be run on Unraid, so the following instructions ap
 2. Ensure you are on on Unraid 6.9.0 or later, otherwise amdgpu drivers are not included
 3. Ensure your GPU is not bound to vfio at boot, on 6.9.0 and later this can be done by visiting `Tools` > `System devices` and ensuring your card (and its audio device) is not checked.
 4. Ensure your GPU is not stubbed by checking its ID on the above page, and cross referencing with `pci-stub.ids=` (`Main` > `Flash`). This is not something that is done by default, so unless you have done it to attach the card to a VM it likely won't be stubbed.
-5. SSH into your Unraid server or open a terminal session from the Unraid UI and run `wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/main/PhoenixMiner.xml" -O "/boot/config/plugins/dockerMan/templates-user/my-PhoenixMiner-lnxd.xml"`
-6. Visit the Docker tab via the Unraid UI and press "Add Container", select "PhoenixMiner-lnxd" from the list and customise it. Make sure you update the variables otherwise your server will be mining for me instead.
+5. SSH into your Unraid server or open a terminal session from the Unraid UI and run `wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/main/PhoenixMiner-AMD.xml" -O "/boot/config/plugins/dockerMan/templates-user/my-PhoenixMiner-AMD-lnxd.xml"`
+6. Visit the Docker tab via the Unraid UI and press "Add Container", select "PhoenixMiner-AMD-lnxd" from the list and customise it. Make sure you update the variables otherwise your server will be mining for me instead.
 7. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
 <details>
   <summary>7.1. If you don't want to enable privileged mode</summary>
