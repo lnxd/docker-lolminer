@@ -7,7 +7,7 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>true</Privileged>
-  <Support>https://hub.docker.com/r/wesparish/amdgpu-pro-20.45-1188099-ubuntu20.04/</Support>
+  <Support>https://github.com/lnxd/docker-phoenixminer</Support>
   <Project/>
   <Overview>Phoenixminer containerised with AMD GPUs and Unraid in mind. Contains AMD drivers.</Overview>
   <Category/>
