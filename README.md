@@ -16,7 +16,7 @@ This container was written to be run on Unraid, so the following instructions ap
 1. Ensure you are on on Unraid 6.9.0 or later, otherwise amdgpu drivers are not included
 2. Ensure your GPU is not bound to vfio at boot, on 6.9.0 and later this can be done by visiting `Tools` > `System Devices` and ensuring your card (and its audio device) is not checked. Also ensure your GPU is not stubbed by checking its ID on the above page, and cross referencing with `pci-stub.ids=` (`Main` > `Flash`). If you made changes in this step, you will need to safely shut down the array and reboot now.
 3. Install ich777's `Radeon TOP` via CA (Easiest way to load AMD GPU drivers on Unraid host)
-4. Install `lnxd/PhoenixMiner-AMD` via [Community Applications](https://forums.unraid.net/topic/38582-plug-in-community-applications/).
+4. Install lnxd's `PhoenixMiner-AMD` via [Community Applications](https://forums.unraid.net/topic/38582-plug-in-community-applications/).
 5. Make sure you update the pool & wallet address otherwise your 'rig' will be generating income for me instead.
 6. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
 <details>
