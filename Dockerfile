@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM ubuntu:20.04
 
 # Build time variables
 ARG MINERV=5.5c
