@@ -10,24 +10,24 @@ Here is an example `docker run` command, please ensure you have your GPU fans ma
 docker run -d --name='PhoenixMiner' --net='bridge' -e TZ="Australia/Sydney" --device='/dev/dri:/dev/dri' 'lnxd/phoenixminer' ./PhoenixMiner -pool asia1.ethermine.org:4444 -wal 0xe037C6245910EbBbA720514835d31B385D76927f.x
 ```
 
-##  Unraid Users | Now in CA!
+
+##  Unraid Users
 This container was written to be run on Unraid, so the following instructions apply to that. Please ensure that you know what you're doing before setting this up, as excessively high temperatures are BAD for computers and could damage your hardware / eventuate in data loss.
-
-1. Ensure you are on on Unraid 6.9.0 or later, otherwise amdgpu drivers are not included
-2. Ensure your GPU is not bound to vfio at boot, on 6.9.0 and later this can be done by visiting `Tools` > `System Devices` and ensuring your card (and its audio device) is not checked. Also ensure your GPU is not stubbed by checking its ID on the above page, and cross referencing with `pci-stub.ids=` (`Main` > `Flash`). If you made changes in this step, you will need to safely shut down the array and reboot now.
-3. Install ich777's `Radeon TOP` via CA (Easiest way to load AMD GPU drivers on Unraid host)
-4. Install lnxd's `PhoenixMiner-AMD` via [Community Applications](https://forums.unraid.net/topic/38582-plug-in-community-applications/).
-5. Make sure you update the pool & wallet address otherwise your 'rig' will be generating income for me instead.
+ 
+### Instructions:
+ 
+1. Ensure you are on Unraid 6.9.0 or later; otherwise, amdgpu drivers are not included.
+2. Ensure your GPU is not bound to vfio at boot, on 6.9.0, and later you can do this by visiting `Tools` > `System Devices` and ensuring your card (and its audio device) is not checked. Also, ensure your GPU is not stubbed by checking its ID on the above page and cross-referencing with `pci-stub.ids=` (by visiting `Main` > `Flash`). If you made changes in this step, you need to safely shut down the array and reboot before proceeding.
+3. Install ich777's `Radeon TOP` via CA (Easiest way to load AMD GPU drivers on Unraid host).
+4. Install lnxd's `PhoenixMiner-AMD` via CA.
+5. Make sure you update the pool & wallet address; otherwise, your 'rig' will generate income for me instead.
 6. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
-<details>
-  <summary>6.1. (Click here if you don't want to enable privileged mode)</summary>
-  
-  Make sure you have `Dynamix System Autofan` installed (can be done via CA). I recommend enabling it and setting the high temperature to 25c at most. Low I set to 20. It was not able to get the PWM min speed but this didn't affect anything for me during testing.
-</details>
+7. Run it, check the logs constantly for the first 20 mins or so to ensure it is working and your card doesn't overheat. If something looks incorrect, stop the container and double-check your config. I like to try and keep my 5500XT around 75c and my RX 580 around 55c (modded bios).
+ 
+**Warning:** If you don't leave privileged mode enabled for the container, your GPU's default fan curve will be used, which is usually optimised for gaming. Make sure you have `Dynamix System Autofan` installed to prevent overheating (can be done via CA). I recommend enabling it and setting the high temperature to 25c at most. Low I set to 20c. I could not get the PWM min speed, but this didn't affect anything for me during testing.
 
-7. Run it, check the logs constantly for the first 20 mins or so to ensure it is working and your card doesn't overheat. If something looks bad, stop the container and double check your config. I like to ensure my 5500XT stays around 75c, and my RX 580 stays around 55c (modded bios)
+If you notice any bugs, feel free to open an Issue or a pull request. For support, I'm best reached via the [support thread](https://forums.unraid.net/topic/104589-support-lnxd-phoenixminer-amd/) on the Unraid Community Forums.
 
-If you notice any bugs, feel free to open an Issue or a pull request. For support, I'm best reached via the [support thread](https://forums.unraid.net/topic/104589-support-lnxd-phoenixminer-amd/) on https://forums.unraid.net.
 
 
 ## Additional PhoenixMiner Arguments
