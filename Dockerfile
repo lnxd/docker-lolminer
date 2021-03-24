@@ -43,8 +43,8 @@ RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
 RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
 RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 
-# Download latest mine.sh
-RUN curl "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/aa912767c685d29846ea7d9813f46858375e7aff/mine.sh" -o "/home/docker/mine.sh"
+# Copy latest mine.sh
+COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Clean up apt
