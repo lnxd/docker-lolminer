@@ -1,4 +1,7 @@
-FROM debian:bullseye-slim
+FROM debian:stable
+
+# Build time variables
+ARG MINERV=5.5c
 
 # Install default apps
 RUN export DEBIAN_FRONTEND=noninteractive
