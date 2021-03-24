@@ -2,31 +2,34 @@ FROM debian:stable
 
 # Build time variables
 ARG MINERV=5.5c
-
-# Install default apps
-RUN export DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y apt-utils
-RUN apt-get install -y curl sudo libpci3 xz-utils
-
-# Set timezone
-RUN ln -fs /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
-RUN apt-get install -y tzdata
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
-# Prevent error messages when running sudo
-RUN echo "Set disable_coredump false" >> /etc/sudo.conf
-
-# Create user account
-RUN useradd docker
-RUN echo 'docker:docker' | sudo chpasswd
-RUN usermod -aG sudo docker
-RUN mkdir /home/docker
-
-# Install amdgpu drivers
 ARG AMD_DRIVER=amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz
 ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux/
+
+# Install default apps
+RUN export DEBIAN_FRONTEND=noninteractive; \
+    apt-get update; \
+    apt-get upgrade -y; \
+    apt-get install -y apt-utils; \
+    apt-get install -y curl sudo libpci3 xz-utils; \
+
+# Clean up apt
+    apt-get clean all; \
+
+# Set timezone
+    ln -fs /usr/share/zoneinfo/Australia/Melbourne /etc/localtime; \
+    apt-get install -y tzdata; \
+    dpkg-reconfigure --frontend noninteractive tzdata; \
+
+# Prevent error messages when running sudo
+    echo "Set disable_coredump false" >> /etc/sudo.conf; \
+
+# Create user account
+    useradd docker; \
+    echo 'docker:docker' | sudo chpasswd; \
+    usermod -aG sudo docker; \
+    mkdir /home/docker;
+
+# Install amdgpu drivers
 RUN mkdir -p /tmp/opencl-driver-amd
 WORKDIR /tmp/opencl-driver-amd
 RUN echo AMD_DRIVER is $AMD_DRIVER; \
@@ -38,17 +41,14 @@ RUN echo AMD_DRIVER is $AMD_DRIVER; \
     rm -rf /tmp/opencl-driver-amd;
 
 # Get Phoenix Miner
-RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.5c/PhoenixMiner_5.5c_Linux.tar.gz" -L -o "PhoenixMiner_5.5c_Linux.tar.gz"
-RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
-RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
-RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
+RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/${MINERV}/PhoenixMiner_${MINERV}_Linux.tar.gz" -L -o "PhoenixMiner_${MINERV}_Linux.tar.gz"; \
+    tar xvzf PhoenixMiner_${MINERV}_Linux.tar.gz -C /home/docker; \
+    mv "/home/docker/PhoenixMiner_${MINERV}_Linux" "/home/docker/phoenixminer"; \
+    sudo chmod +x /home/docker/phoenixminer/PhoenixMiner;
 
 # Copy latest mine.sh
 COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
-
-# Clean up apt
-RUN apt-get clean all
 
 # Set environment variables.
 ENV PATH=$PATH:/home/docker/phoenixminer
