@@ -8,7 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y apt-utils
-RUN apt-get install -y curl sudo libpci3 xz-utils wget
+RUN apt-get install -y curl sudo libpci3 xz-utils
 
 # Set timezone
 RUN ln -fs /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
@@ -38,13 +38,13 @@ RUN echo AMD_DRIVER is $AMD_DRIVER; \
     rm -rf /tmp/opencl-driver-amd;
 
 # Get Phoenix Miner
-RUN wget "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.5c/PhoenixMiner_5.5c_Linux.tar.gz"
+RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/5.5c/PhoenixMiner_5.5c_Linux.tar.gz" -L -o "PhoenixMiner_5.5c_Linux.tar.gz"
 RUN tar xvzf PhoenixMiner_5.5c_Linux.tar.gz -C /home/docker
 RUN mv "/home/docker/PhoenixMiner_5.5c_Linux" "/home/docker/phoenixminer"
 RUN sudo chmod +x /home/docker/phoenixminer/PhoenixMiner
 
 # Download latest mine.sh
-RUN wget "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/aa912767c685d29846ea7d9813f46858375e7aff/mine.sh" -O "/home/docker/mine.sh"
+RUN curl "https://raw.githubusercontent.com/lnxd/docker-phoenixminer/aa912767c685d29846ea7d9813f46858375e7aff/mine.sh" -o "/home/docker/mine.sh"
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Clean up apt
