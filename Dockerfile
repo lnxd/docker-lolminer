@@ -34,7 +34,7 @@ RUN apt-get update; \
     add-apt-repository ppa:oibaf/graphics-drivers; \
     apt-get update; \
     apt-get update && sudo apt-get -y upgrade; \
-    apt-get install mesa; \
+    apt-get install mesa-vdpau-drivers; \
     apt-get purge software-properties-common; \
     apt-get clean all;
 
