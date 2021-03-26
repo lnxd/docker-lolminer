@@ -9,7 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
     apt-get upgrade -y; \
     apt-get install -y apt-utils; \
-    apt-get install -y curl sudo libpci3 xz-utils; \
+    apt-get install -y sudo libpci3 xz-utils; \
 
 # Clean up apt
     apt-get clean all; \
@@ -35,14 +35,18 @@ RUN apt-get update; \
     apt-get update; \
     apt-get update && sudo apt-get -y upgrade; \
     apt-get install mesa; \
-    apt-get remove software-properties-common; \
+    apt-get purge software-properties-common; \
     apt-get clean all;
 
 # Get Phoenix Miner
-RUN curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/${MINERV}/PhoenixMiner_${MINERV}_Linux.tar.gz" -L -o "PhoenixMiner_${MINERV}_Linux.tar.gz"; \
+RUN apt-get update ; \
+    apt-get install -y curl; \
+    curl "https://github.com/PhoenixMinerDevTeam/PhoenixMiner/releases/download/${MINERV}/PhoenixMiner_${MINERV}_Linux.tar.gz" -L -o "PhoenixMiner_${MINERV}_Linux.tar.gz"; \
     tar xvzf PhoenixMiner_${MINERV}_Linux.tar.gz -C /home/docker; \
     mv "/home/docker/PhoenixMiner_${MINERV}_Linux" "/home/docker/phoenixminer"; \
-    sudo chmod +x /home/docker/phoenixminer/PhoenixMiner;
+    sudo chmod +x /home/docker/phoenixminer/PhoenixMiner; \
+    apt-get purge -y curl; \
+    apt-get clean all; 
 
 # Copy latest mine.sh
 COPY mine.sh /home/docker/mine.sh
