@@ -29,9 +29,13 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     mkdir /home/docker;
 
 # Install radeon drivers
-RUN add-apt-repository ppa:oibaf/graphics-drivers; \
+RUN apt-get update; \
+    apt-get install -y software-properties-common; \
+    add-apt-repository ppa:oibaf/graphics-drivers; \
     apt-get update; \
     apt-get update && sudo apt-get -y upgrade; \
+    apt-get install mesa; \
+    apt-get remove software-properties-common; \
     apt-get clean all;
 
 # Get Phoenix Miner
