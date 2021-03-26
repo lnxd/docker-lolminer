@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ich777/debian-baseimage:bullseye
 
 # Build time variables
 ARG MINERV=5.5c
@@ -29,14 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     mkdir /home/docker;
 
 # Install radeon drivers
-RUN apt-get update; \
-    apt-get install -y software-properties-common; \
-    add-apt-repository ppa:oibaf/graphics-drivers; \
-    apt-get update; \
-    apt-get update && sudo apt-get -y upgrade; \
-    apt-get install -y mesa-vdpau-drivers; \
-    apt-get purge software-properties-common; \
-    apt-get clean all;
+RUN apt-get update && apt-get -y install mesa-*
 
 # Get Phoenix Miner
 RUN apt-get update ; \

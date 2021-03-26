@@ -2,7 +2,7 @@
 
 echo "Project: PhoenixMiner 5.5c"
 echo "Author:  lnxd"
-echo "Base:    Ubuntu 20.04"
+echo "Base:    Debian Bullseye"
 echo "Target:  Unraid 6.9.0 - 6.9.1"
 echo ""
 echo "Wallet:  $WALLET"
