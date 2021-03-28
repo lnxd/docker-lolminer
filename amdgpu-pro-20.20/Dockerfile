@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 # Build time variables
 ARG MINERV=5.5c
 ARG AMD_DRIVER=amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz
-ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux/
+ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux
 
 # Install default apps
 RUN export DEBIAN_FRONTEND=noninteractive; \
@@ -51,6 +51,7 @@ COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
+ENV BASE="Ubuntu 20.04"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"
