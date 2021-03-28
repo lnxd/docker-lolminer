@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 # Build time variables
 ARG MINERV=5.5c
-ARG AMD_DRIVER=amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz
+ARG AMD_DRIVER=amdgpu-pro-20.45-1225310-ubuntu-20.04.tar.xz
 ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux/
 
 # Install default apps
