@@ -31,7 +31,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 
 # Install radeon drivers tip from john42 on https://community.amd.com/t5/drivers-software/fglrx-15-201-0ubuntu1-amd64-ub-14-01-deb-is-not-a-debian-format/td-p/292133
 RUN apt-get update; \
-    apt-get install -y curl wget; \
+    apt-get install -y curl wget libfontconfig1 libfreetype6 libice6 libqtcore4 libsm6 libx11-6 libxext6 libxfixes3 libxrandr2 libxrender1; \
     apt-get install -y execstack; \
     apt-get install -y debhelper; \
     apt-get install -y dkms; \
