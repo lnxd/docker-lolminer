@@ -51,6 +51,7 @@ COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
+ENV BASE="Ubuntu 20.04"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"
