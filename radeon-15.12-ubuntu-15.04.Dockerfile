@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:16.04
 
 # Build time variables
 ARG MINERV=5.5c
