@@ -4,7 +4,7 @@ FROM ubuntu:14.04.4
 # Build time variables
 ARG MINERV=5.5c
 ARG AMD_DRIVER=fglrx_15.302-0ubuntu1_amd64_ub_14.01.deb
-ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux/
+ARG AMD_DRIVER_URL=https://drivers.amd.com/drivers/linux
 
 # Install default apps
 RUN export DEBIAN_FRONTEND=noninteractive; \
@@ -67,6 +67,7 @@ COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
+ENV BASE="Ubuntu 14.04.4"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"
