@@ -3,6 +3,7 @@
 echo "Project: PhoenixMiner $MINERV"
 echo "Author:  lnxd"
 echo "Base:    $BASE"
+echo "Driver:  $DRIVER"
 echo "Target:  Unraid 6.9.0 - 6.9.1"
 echo ""
 echo "Wallet:  $WALLET"

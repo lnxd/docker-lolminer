@@ -52,6 +52,7 @@ RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
 ENV BASE="Ubuntu 20.04"
+ENV DRIVER="amdgpu-pro-20.45-1188099 / AMDGPU-Pro Driver v20.45"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"

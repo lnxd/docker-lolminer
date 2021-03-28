@@ -68,6 +68,7 @@ RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
 ENV BASE="Ubuntu 14.04.4"
+ENV DRIVER="fglrx_15.302 / AMD Radeon Software Crimson Edition 15.12 Proprietary"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"
