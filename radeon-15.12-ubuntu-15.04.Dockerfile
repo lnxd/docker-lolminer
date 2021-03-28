@@ -29,14 +29,23 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     usermod -aG sudo docker; \
     mkdir /home/docker;
 
-# Install radeon drivers tip from john42 on https://community.amd.com/t5/drivers-software/fglrx-15-201-0ubuntu1-amd64-ub-14-01-deb-is-not-a-debian-format/td-p/292133
+# Prepare to install radeon drivers 
+# Tip from john42 on https://community.amd.com/t5/drivers-software/fglrx-15-201-0ubuntu1-amd64-ub-14-01-deb-is-not-a-debian-format/td-p/292133
 RUN apt-get update; \
     apt-get install -y curl wget libfontconfig1 libfreetype6 libice6 libqtcore4 libsm6 libx11-6 libxext6 libxfixes3 libxrandr2 libxrender1; \
+    apt-get install -y --reinstall initramfs-tools && apt-get install -y initramfs-tools; \
     apt-get install -y execstack; \
     apt-get install -y debhelper; \
     apt-get install -y dkms; \
     apt-get install -y lib32gcc1; \
     apt-get install -y dh-modaliases; \
+    curl http://launchpadlibrarian.net/218201281/fglrx-core_15.201-0ubuntu1_amd64.deb -o /home/docker/fglrx-core.deb; \
+    dpkg -i --force-confold "/home/docker/fglrx-core.deb"; exit 0; \
+    apt-get -f install -y; \
+    apt-get clean all;
+
+#Install radeon drivers
+RUN apt-get update; \
     curl --referer $AMD_DRIVER_URL $AMD_DRIVER_URL/$AMD_DRIVER -o /home/docker/driver.deb; \
     dpkg -i --force-confold "/home/docker/driver.deb"; exit 0; \
     apt-get -f install -y; \
@@ -57,7 +66,7 @@ COPY mine.sh /home/docker/mine.sh
 RUN sudo chmod +x /home/docker/mine.sh
 
 # Set environment variables.
-ENV BASE="Ubuntu 15.04"
+ENV BASE="Ubuntu 16.04"
 ENV DRIVER="fglrx_15.302 / AMD Radeon Software Crimson Edition 15.12 Proprietary"
 ENV PATH=$PATH:/home/docker/phoenixminer
 ENV HOME="/home/docker"
