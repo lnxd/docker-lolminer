@@ -63,10 +63,10 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * AMD Radeon™ Vega Frontier Edition
 * AMD Radeon™ Pro WX 9100
 * AMD Radeon™ RX 550/560/570/580/590 Series Graphics
-**Confirmed working:** RX580 by lnxd, RX580 by SPOautos, RX570 by NixonInnes
+**Confirmed working:** RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes
 * AMD Radeon™ Pro WX 8200
 * AMD Radeon™ RX 460/470/480 Graphics
-**Confirmed working:** RX480 by ich777
+**Confirmed working:** RX480 8GB by ich777
 * AMD FirePro™ W9100
 * AMD Radeon™ Pro Duo
 * AMD FirePro™ W8100
@@ -84,10 +84,10 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * Radeon™ Vega Frontier Edition
 * AMD FirePro™ W9100
 * Radeon™ RX 550/560/570/580 Series Graphics
-**Confirmed working:** RX580 by lnxd, RX580 by SPOautos, RX570 by NixonInnes
+**Confirmed working:** RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes
 * AMD FirePro™ W8100
 * AMD Radeon™ RX 460/470/480 Graphics
-**Confirmed working:** RX480 by ich777
+**Confirmed working:** RX480 8GB by ich777
 * AMD FirePro™ W7100
 * AMD Radeon™ Pro Duo
 * AMD FirePro™ W5100
@@ -110,21 +110,27 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 ## FAQ:
 #### **Q:** Where can I find more arguments to use in additional?
 **A:** The output of ./Phoenixminer -help for 5.5c is available here.
- 
+
+
 #### **Q:** I have multiple GPUs, can I use this container?
 **A:** Yes! If you have multiple GPUs, and they are all listed in one table, go for that version. If you have multiple GPUs and they are on different tables, you can have multiple containers on different tags and use the -gpus flag in PhoenixMiner to set which container uses which GPU.
+
 
 #### **Q:** What are the mining fees?
 **A:** There are none from me. The developer of PhoenixMiner charges 0.65%. This means that every 90 minutes the miner will mine for them for 35 seconds. The default pool, Ethermine, has a 1% fee and shares the transaction fees from the block. You can change to mine on any pool.
 
+
 #### **Q:** Why is my card still heating up if I've set a target temperature (tt)?
 **A:** PhoenixMiner seems to still rely on the default fan curve, so unless you've optimised that for mining it's probably best to set a fixed fan speed by setting the tt value to a negative, such as -70 (fixed at 70% fan speed while PhoenixMiner is running). The lower you can safely set this, the slightly less power your rig will use and the less the affect mining will have on your GPU fan's lifespan.
- 
+
+
 #### **Q:** Why am I getting such a low hash rate (eg. 2.5MH/s)?
 **A:** Could be a lot of things, from the card having a very low power limit set, to trying to use a fake card. But the most likely issue is that you're using a card without enough VRAM. 4gb cards are not really suitable for Ethereum mining, please see the Compatibility section above.
 
+
 #### **Q:** Is there an easier way to see the data from the Unraid WebUI Dashboard?
 **A:** Yes! Users who have ich777's Radeon TOP installed can also install b3rs3rk's GPU Statistics plugin from CA. This will allow you to see things like the GPU temperature, load, fan RPM of one GPU at a time. Please note that it is expected for memory usage to be only around 4gb, as this is the current DAG limit.
+
 
 #### **Q:** Does this also work with NVIDIA cards?
 **A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that lnxd/phoenixminer:latest-20.45, lnxd/phoenixminer:latest-20.20 and lnxd/phoenixminer:latest work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
