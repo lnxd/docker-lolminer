@@ -9,17 +9,13 @@ echo ""
 echo "Wallet:  $WALLET"
 echo "Pool:    $POOL"
 echo ""
+echo "Making sure nvidia drivers are installed and up to date"
+ubuntu-drivers autoinstall
+DRIVER="NVIDIA ${nvidia-smi --query-gpu=driver_version --format=csv,noheader}"
+echo "Finished installing drivers"
+echo ""
 echo "Starting PhoenixMiner $MINERV with the following arguments:"
 echo "-pool $POOL -wal $WALLET.$PASSWORD -tt $TT  -tstop $TSTOP -tstart $TSTART -cdm 1 -cdmport 5450 $ADDITIONAL"
-
-if [ DRIVER == "NVIDIA" ]
-then
-   echo "First run on NVIDIA detected!"
-   echo "Installing NVIDIA drivers"
-   ubuntu-drivers autoinstall
-   DRIVER="NVIDIA ${nvidia-smi --query-gpu=driver_version --format=csv,noheader}"
-fi
-
-
+echo ""
 cd /home/docker/phoenixminer
 ./PhoenixMiner -pool $POOL -wal $WALLET.$PASSWORD -tt $TT  -tstop $TSTOP -tstart $TSTART -cdm 1 -cdmport 5450 $ADDITIONAL
