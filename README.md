@@ -4,11 +4,14 @@ PhoenixMiner binary source for this container is currently version 5.5c from [Gi
 
 It contains version 20.20 of the AMDGPU Pro Drivers direct from [AMD](https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20)
 
+
+
 ## Non Unraid Users
 Here is an example `docker run` command, please ensure you have your GPU fans manually controlled to prevent overheating, or add `--privileged` to the command and use PhoenixMiner arguments accordingly.
 ```
 docker run -d --name='PhoenixMiner' --net='bridge' -e TZ="Australia/Sydney" --device='/dev/dri:/dev/dri' 'lnxd/phoenixminer' ./PhoenixMiner -pool asia1.ethermine.org:4444 -wal 0xe037C6245910EbBbA720514835d31B385D76927f.x
 ```
+
 
 
 ##  Unraid Users
@@ -33,101 +36,101 @@ If you notice any bugs, feel free to open an Issue or a pull request. For suppor
 ​
 ##  Docker Hub Tags:
 Different AMD GPUs require different driver versions, and those different driver versions often don't work very well on Operating Systems that they weren't built for. For this reason, I've gone ahead and changed to using multiple tags, each tag has it's own GPU compatibility table further down. If someone has success with a GPU on a specific tag please reply to this thread and let me know so I can update the table. I only have access to an RX 580 and a 5500XT for testing.
-**lnxd/phoenixminer:latest** (Same as latest-20.20 as this is the most compatible with current cards)
-**lnxd/phoenixminer:latest-20.45** (Only for RX6800 and RX6900)
-**lnxd/phoenixminer:latest-20.20**
-**lnxd/phoenixminer:latest-18.20**
- 
 
+* **lnxd/phoenixminer:latest** (Same as latest-20.20 as this is the most compatible with current cards)
+* **lnxd/phoenixminer:latest-20.45** (Only for RX6800 and RX6900)
+* **lnxd/phoenixminer:latest-20.20**
+* **lnxd/phoenixminer:latest-18.20**
+ 
 
+​
 ## Compatibility:
 These lists are very hopeful, they're sourced from the AMD website, and there's a real possibility your GPU might not work with a tag it's supposed to. Please do not make purchasing decisions based on these tables.
- 
+ 
 Also keep in mind you are unlikely to be able to profit from mining with a card with less than or equal to 4GB VRAM available to it. If you try this container you will probably get a DAG generation error or an extremely low hash rate.
- 
-**GPUs possibly compatible with lnxd/phoenixminer:latest-20.20:** 
-AMD Radeon™ RX 5700/5600/5500 Series Graphics.
-Confirmed working: 5500XT @lnxd
-AMD Radeon™ Pro W-series
-AMD Radeon™ VII Series Graphics
-AMD Radeon™ Pro W 5700/5500 Series Graphics
-AMD Radeon™ RX Vega Series Graphics
-AMD Radeon™ Pro WX-series
-AMD Radeon™ Vega Frontier Edition
-AMD Radeon™ Pro WX 9100
-AMD Radeon™ RX 550/560/570/580/590 Series Graphics
-Confirmed working: RX580 @lnxd, RX580 @SPOautos, RX570 @NixonInnes
-AMD Radeon™ Pro WX 8200
-AMD Radeon™ RX 460/470/480 Graphics
-Confirmed working: RX480 @ich777
-AMD FirePro™ W9100
-AMD Radeon™ Pro Duo
-AMD FirePro™ W8100
-AMD Radeon™ R9 Fury/Fury X/Nano Graphics
-AMD FirePro™ W7100
-AMD Radeon™ R9 380/380X/390/390X Graphics
-AMD FirePro™ W5100
-AMD Radeon™ R9 285/290/290X Graphics
-AMD FirePro™ W4300
-AMD Radeon™ R9 360 Graphics
 
-**GPUs possibly compatible with lnxd/phoenixminer:latest-18.20:**
-Radeon™ RX Vega Series Graphics
-AMD Radeon™ Pro WX-series
-Radeon™ Vega Frontier Edition
-AMD FirePro™ W9100
-Radeon™ RX 550/560/570/580 Series Graphics
-Confirmed working: RX580 @lnxd, RX580 @SPOautos, RX570 @NixonInnes
-AMD FirePro™ W8100
-AMD Radeon™ RX 460/470/480 Graphics
-Confirmed working: RX480 @ich777
-AMD FirePro™ W7100
-AMD Radeon™ Pro Duo
-AMD FirePro™ W5100
-AMD Radeon™ R9 Fury/Fury X/Nano Graphics
-AMD FirePro™ W4300
-AMD Radeon™ R9 380/380X/390/390X Graphics
-AMD FirePro™ W4100
-AMD Radeon™ R9 285/290/290X Graphics
-AMD FirePro™ W2100
-AMD Radeon™ R7 240/250/250X/260/260X/350
-AMD FirePro™ W600
-AMD Radeon™ HD7700/7800/8500/8600
-AMD FirePro™ S-Series
-AMD Radeon™ R9 360 Graphics
-AMD Radeon™ Pro WX 9100
-AMD Radeon™ R5 340
- 
-**GPUs possibly compatible with lnxd/phoenixminer:latest-20.45:**
-Spoiler
-AMD Radeon™ RX 6900/6800 Series Graphics
+### GPUs possibly compatible with lnxd/phoenixminer:latest-20.45:
+* AMD Radeon™ RX 6900/6800 Series Graphics
 
+### GPUs possibly compatible with lnxd/phoenixminer:latest-20.20:
+* AMD Radeon™ RX 5700/5600/5500 Series Graphics.
+**Confirmed working:** 5500XT by lnxd
+* AMD Radeon™ Pro W-series
+* AMD Radeon™ VII Series Graphics
+* AMD Radeon™ Pro W 5700/5500 Series Graphics
+* AMD Radeon™ RX Vega Series Graphics
+* AMD Radeon™ Pro WX-series
+* AMD Radeon™ Vega Frontier Edition
+* AMD Radeon™ Pro WX 9100
+* AMD Radeon™ RX 550/560/570/580/590 Series Graphics
+**Confirmed working:** RX580 by lnxd, RX580 by SPOautos, RX570 by NixonInnes
+* AMD Radeon™ Pro WX 8200
+* AMD Radeon™ RX 460/470/480 Graphics
+**Confirmed working:** RX480 by ich777
+* AMD FirePro™ W9100
+* AMD Radeon™ Pro Duo
+* AMD FirePro™ W8100
+* AMD Radeon™ R9 Fury/Fury X/Nano Graphics
+* AMD FirePro™ W7100
+* AMD Radeon™ R9 380/380X/390/390X Graphics
+* AMD FirePro™ W5100
+* AMD Radeon™ R9 285/290/290X Graphics
+* AMD FirePro™ W4300
+* AMD Radeon™ R9 360 Graphics
 
- 
+### GPUs possibly compatible with lnxd/phoenixminer:latest-18.20:
+* Radeon™ RX Vega Series Graphics
+* AMD Radeon™ Pro WX-series
+* Radeon™ Vega Frontier Edition
+* AMD FirePro™ W9100
+* Radeon™ RX 550/560/570/580 Series Graphics
+**Confirmed working:** RX580 by lnxd, RX580 by SPOautos, RX570 by NixonInnes
+* AMD FirePro™ W8100
+* AMD Radeon™ RX 460/470/480 Graphics
+**Confirmed working:** RX480 by ich777
+* AMD FirePro™ W7100
+* AMD Radeon™ Pro Duo
+* AMD FirePro™ W5100
+* AMD Radeon™ R9 Fury/Fury X/Nano Graphics
+* AMD FirePro™ W4300
+* AMD Radeon™ R9 380/380X/390/390X Graphics
+* AMD FirePro™ W4100
+* AMD Radeon™ R9 285/290/290X Graphics
+* AMD FirePro™ W2100
+* AMD Radeon™ R7 240/250/250X/260/260X/350
+* AMD FirePro™ W600
+* AMD Radeon™ HD7700/7800/8500/8600
+* AMD FirePro™ S-Series
+* AMD Radeon™ R9 360 Graphics
+* AMD Radeon™ Pro WX 9100
+* AMD Radeon™ R5 340
+ 
+
+​
 ## FAQ:
 **Q:** Where can I find more arguments to use in additional?
 **A:** The output of ./Phoenixminer -help for 5.5c is available here.
- 
+ 
 **Q:** I have multiple GPUs, can I use this container?
 **A:** Yes! If you have multiple GPUs, and they are all listed in one table, go for that version. If you have multiple GPUs and they are on different tables, you can have multiple containers on different tags and use the -gpus flag in PhoenixMiner to set which container uses which GPU.
- 
+ 
 **Q:** What are the mining fees?
 **A:** There are none from me. The developer of PhoenixMiner charges 0.65%. This means that every 90 minutes the miner will mine for them for 35 seconds. The default pool, Ethermine, has a 1% fee and shares the transaction fees from the block. You can change to mine on any pool.
- 
+ 
 **Q:** Why is my card still heating up if I've set a target temperature (tt)?
 **A:** PhoenixMiner seems to still rely on the default fan curve, so unless you've optimised that for mining it's probably best to set a fixed fan speed by setting the tt value to a negative, such as -70 (fixed at 70% fan speed while PhoenixMiner is running). The lower you can safely set this, the slightly less power your rig will use and the less the affect mining will have on your GPU fan's lifespan.
- 
+ 
 **Q:** Why am I getting such a low hash rate (eg. 2.5MH/s)?
 **A:** Could be a lot of things, from the card having a very low power limit set, to trying to use a fake card. But the most likely issue is that you're using a card without enough VRAM. 4gb cards are not really suitable for Ethereum mining, please see the Compatibility section above.
- 
+ 
 **Q:** Is there an easier way to see the data from the Unraid WebUI Dashboard?
 **A:** Yes! Users who have ich777's Radeon TOP installed can also install b3rs3rk's GPU Statistics plugin from CA. This will allow you to see things like the GPU temperature, load, fan RPM of one GPU at a time. Please note that it is expected for memory usage to be only around 4gb, as this is the current DAG limit.
- 
+ 
 **Q:** Does this also work with NVIDIA cards?
 **A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that lnxd/phoenixminer:latest-20.45, lnxd/phoenixminer:latest-20.20 and lnxd/phoenixminer:latest work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
 ​
 
-
+​
 ## Additional PhoenixMiner Arguments
 ```
 Phoenix Miner 5.5c Linux/gcc - Release build
