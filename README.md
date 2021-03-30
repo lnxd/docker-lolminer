@@ -16,9 +16,9 @@ docker run -d --name='PhoenixMiner' --net='bridge' -e TZ="Australia/Sydney" --de
 
 ##  Unraid Users
 This container was written to be run on Unraid, so the following instructions apply to that. Please ensure that you know what you're doing before setting this up, as excessively high temperatures are BAD for computers and could damage your hardware / eventuate in data loss.
- 
+
 ### Instructions:
- 
+
 1. Ensure you are on Unraid 6.9.0 or later; otherwise, amdgpu drivers are not included.
 2. Ensure your GPU is not bound to vfio at boot, on 6.9.0, and later you can do this by visiting `Tools` > `System Devices` and ensuring your card (and its audio device) is not checked. Also, ensure your GPU is not stubbed by checking its ID on the above page and cross-referencing with `pci-stub.ids=` (by visiting `Main` > `Flash`). If you made changes in this step, you need to safely shut down the array and reboot before proceeding.
 3. Install ich777's `Radeon TOP` via CA (Easiest way to load AMD GPU drivers on Unraid host).
@@ -27,7 +27,7 @@ This container was written to be run on Unraid, so the following instructions ap
 6. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
 7. Run it, check the logs constantly for the first 20 mins or so to ensure it is working and your card doesn't overheat. If something looks incorrect, stop the container and double-check your config. I like to try and keep my 5500XT around 75c and my RX 580 around 55c (modded bios).
 8. (Optional) If you want to monitor your miner from a web app rather than a representation of the logs, check out PhoenixStats in CA.
- 
+
 **Warning:** If you don't leave privileged mode enabled for the container, your GPU's default fan curve will be used, which is usually optimised for gaming. Make sure you have `Dynamix System Autofan` installed to prevent overheating (can be done via CA). I recommend enabling it and setting the high temperature to 25c at most. Low I set to 20c. I could not get the PWM min speed, but this didn't affect anything for me during testing.
 
 If you notice any bugs, feel free to open an Issue or a pull request. For support, I'm best reached via the [support thread](https://forums.unraid.net/topic/104589-support-lnxd-phoenixminer-amd/) on the Unraid Community Forums.
@@ -37,11 +37,11 @@ If you notice any bugs, feel free to open an Issue or a pull request. For suppor
 ##  Docker Hub Tags:
 Different AMD GPUs require different driver versions, and those different driver versions often don't work very well on Operating Systems that they weren't built for. For this reason, I've gone ahead and changed to using multiple tags, each tag has it's own GPU compatibility table further down.
 
-* **lnxd/phoenixminer:latest** (Same as **latest-20.20** as this is the most compatible with current cards)
-* **lnxd/phoenixminer:latest-20.45** (Only for RX6800 and RX6900)
-* **lnxd/phoenixminer:latest-20.20**
-* **lnxd/phoenixminer:latest-18.20**
- 
+* `lnxd/phoenixminer:latest` (Same as `latest-20.20` as this is the most compatible with current cards)
+* `lnxd/phoenixminer:latest-20.45` (Only for RX6800 and RX6900)
+* `lnxd/phoenixminer:latest-20.20`
+* `lnxd/phoenixminer:latest-18.20`
+
 
 ​
 ## Compatibility:
@@ -55,7 +55,7 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 
 ### GPUs possibly compatible with **lnxd/phoenixminer:latest-20.20**:
 * AMD Radeon™ RX 5700/5600/5500 Series Graphics.
-  ```Confirmed working: 5500XT by lnxd```
+  - ```Confirmed working: 5500XT by lnxd```
 * AMD Radeon™ Pro W-series
 * AMD Radeon™ VII Series Graphics
 * AMD Radeon™ Pro W 5700/5500 Series Graphics
@@ -64,10 +64,10 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * AMD Radeon™ Vega Frontier Edition
 * AMD Radeon™ Pro WX 9100
 * AMD Radeon™ RX 550/560/570/580/590 Series Graphics
-  ```Confirmed working: RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes```
+  - ```Confirmed working: RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes```
 * AMD Radeon™ Pro WX 8200
 * AMD Radeon™ RX 460/470/480 Graphics
-  ```Confirmed working: RX480 8GB by ich777```
+  - ```Confirmed working: RX480 8GB by ich777```
 * AMD FirePro™ W9100
 * AMD Radeon™ Pro Duo
 * AMD FirePro™ W8100
@@ -86,10 +86,10 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * Radeon™ Vega Frontier Edition
 * AMD FirePro™ W9100
 * Radeon™ RX 550/560/570/580 Series Graphics
-  ```Confirmed working: RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes```
+  - ```Confirmed working: RX580 8GB by lnxd, RX580 8GB by SPOautos, RX570 8GB by NixonInnes```
 * AMD FirePro™ W8100
 * AMD Radeon™ RX 460/470/480 Graphics
-  ```Confirmed working: RX480 8GB by ich777```
+  - ```Confirmed working: RX480 8GB by ich777```
 * AMD FirePro™ W7100
 * AMD Radeon™ Pro Duo
 * AMD FirePro™ W5100
@@ -106,7 +106,7 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * AMD Radeon™ R9 360 Graphics
 * AMD Radeon™ Pro WX 9100
 * AMD Radeon™ R5 340
- 
+
 
 ​
 ## FAQ:
