@@ -49,10 +49,11 @@ These lists are very hopeful, they're sourced from the AMD website, and there's 
  
 Also keep in mind you are unlikely to be able to profit from mining with a card with less than or equal to 4GB VRAM available to it. If you try this container you will probably get a DAG generation error or an extremely low hash rate.
 
-### GPUs possibly compatible with lnxd/phoenixminer:latest-20.45:
+### GPUs possibly compatible with **lnxd/phoenixminer:latest-20.45**:
 * AMD Radeon™ RX 6900/6800 Series Graphics
 
-### GPUs possibly compatible with lnxd/phoenixminer:latest-20.20:
+
+### GPUs possibly compatible with **lnxd/phoenixminer:latest-20.20**:
 * AMD Radeon™ RX 5700/5600/5500 Series Graphics.
 **Confirmed working:** 5500XT by lnxd
 * AMD Radeon™ Pro W-series
@@ -78,7 +79,8 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * AMD FirePro™ W4300
 * AMD Radeon™ R9 360 Graphics
 
-### GPUs possibly compatible with lnxd/phoenixminer:latest-18.20:
+
+### GPUs possibly compatible with **lnxd/phoenixminer:latest-18.20**:
 * Radeon™ RX Vega Series Graphics
 * AMD Radeon™ Pro WX-series
 * Radeon™ Vega Frontier Edition
@@ -133,7 +135,7 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 
 
 #### **Q:** Does this also work with NVIDIA cards?
-**A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that lnxd/phoenixminer:latest-20.45, lnxd/phoenixminer:latest-20.20 and lnxd/phoenixminer:latest work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
+**A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that **lnxd/phoenixminer:latest-20.45**, **lnxd/phoenixminer:latest-20.20** and **lnxd/phoenixminer:latest** work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
 ​
 
 ​
