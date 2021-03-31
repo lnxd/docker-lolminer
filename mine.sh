@@ -10,7 +10,7 @@ echo "Wallet:  $WALLET"
 echo "Pool:    $POOL"
 echo ""
 echo "Starting lolminer $MINERV with the following arguments:"
-echo "--algo $ALGORITHM -pool $POOL --port $PORT -user $WALLET --pass $PASSWORD $ADDITIONAL"
+echo "--algo $ALGORITHM --pool $POOL -user $WALLET --pass $PASSWORD $ADDITIONAL"
 
 cd /home/docker/lolminer
 ./lolMiner --algo $ALGO -pool $POOL --port $PORT -user $WALLET --pass $PASSWORD $ADDITIONAL
