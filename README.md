@@ -1,15 +1,15 @@
-# PhoenixMiner Docker Container for Unraid
+# lolminer Docker Container for Unraid
 
-PhoenixMiner binary source for this container is currently version 5.5c from [Github](https://github.com/PhoenixMinerDevTeam/PhoenixMiner/).
+lolminer binary source for this container is currently version 5.5c from [Github](https://github.com/lolminerDevTeam/lolminer/).
 
 It contains version 20.20 of the AMDGPU Pro Drivers direct from [AMD](https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20)
 
 
 
 ## Non Unraid Users
-Here is an example `docker run` command, please ensure you have your GPU fans manually controlled to prevent overheating, or add `--privileged` to the command and use PhoenixMiner arguments accordingly.
+Here is an example `docker run` command, please ensure you have your GPU fans manually controlled to prevent overheating, or add `--privileged` to the command and use lolminer arguments accordingly.
 ```
-docker run -d --name='PhoenixMiner' --net='bridge' -e TZ="Australia/Sydney" --device='/dev/dri:/dev/dri' 'lnxd/phoenixminer' ./PhoenixMiner -pool asia1.ethermine.org:4444 -wal 0xe037C6245910EbBbA720514835d31B385D76927f.x
+docker run -d --name='lolminer' --net='bridge' -e TZ="Australia/Sydney" --device='/dev/dri:/dev/dri' 'lnxd/lolminer' ./lolminer -pool asia1.ethermine.org:4444 -wal 0xe037C6245910EbBbA720514835d31B385D76927f.x
 ```
 
 
@@ -22,25 +22,25 @@ This container was written to be run on Unraid, so the following instructions ap
 1. Ensure you are on Unraid 6.9.0 or later; otherwise, amdgpu drivers are not included.
 2. Ensure your GPU is not bound to vfio at boot, on 6.9.0, and later you can do this by visiting `Tools` > `System Devices` and ensuring your card (and its audio device) is not checked. Also, ensure your GPU is not stubbed by checking its ID on the above page and cross-referencing with `pci-stub.ids=` (by visiting `Main` > `Flash`). If you made changes in this step, you need to safely shut down the array and reboot before proceeding.
 3. Install ich777's `Radeon TOP` via CA (Easiest way to load AMD GPU drivers on Unraid host).
-4. Install lnxd's `PhoenixMiner-AMD` via CA.
+4. Install lnxd's `lolminer-AMD` via CA.
 5. Make sure you update the pool & wallet address; otherwise, your 'rig' will generate income for me instead.
-6. If you want to enable PhoenixMiner to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
+6. If you want to enable lolminer to control the fans / undervolt / overclock: leave privileged mode enabled for the container.
 7. Run it, check the logs constantly for the first 20 mins or so to ensure it is working and your card doesn't overheat. If something looks incorrect, stop the container and double-check your config. I like to try and keep my 5500XT around 75c and my RX 580 around 55c (modded bios).
 8. (Optional) If you want to monitor your miner from a web app rather than a representation of the logs, check out PhoenixStats in CA.
 
 **Warning:** If you don't leave privileged mode enabled for the container, your GPU's default fan curve will be used, which is usually optimised for gaming. Make sure you have `Dynamix System Autofan` installed to prevent overheating (can be done via CA). I recommend enabling it and setting the high temperature to 25c at most. Low I set to 20c. I could not get the PWM min speed, but this didn't affect anything for me during testing.
 
-If you notice any bugs, feel free to open an Issue or a pull request. For support, I'm best reached via the [support thread](https://forums.unraid.net/topic/104589-support-lnxd-phoenixminer-amd/) on the Unraid Community Forums.
+If you notice any bugs, feel free to open an Issue or a pull request. For support, I'm best reached via the [support thread](https://forums.unraid.net/topic/104589-support-lnxd-lolminer-amd/) on the Unraid Community Forums.
 
 
 ​
 ##  Docker Hub Tags:
 Different AMD GPUs require different driver versions, and those different driver versions often don't work very well on Operating Systems that they weren't built for. For this reason, I've gone ahead and changed to using multiple tags, each tag has it's own GPU compatibility table further down.
 
-* `lnxd/phoenixminer:latest` (Same as `latest-20.20` as this is the most compatible with current cards)
-* `lnxd/phoenixminer:latest-20.45` (Only for RX6800 and RX6900)
-* `lnxd/phoenixminer:latest-20.20`
-* `lnxd/phoenixminer:latest-18.20`
+* `lnxd/lolminer:latest` (Same as `latest-20.20` as this is the most compatible with current cards)
+* `lnxd/lolminer:latest-20.45` (Only for RX6800 and RX6900)
+* `lnxd/lolminer:latest-20.20`
+* `lnxd/lolminer:latest-18.20`
 
 
 ​
@@ -49,11 +49,11 @@ These lists are very hopeful, they're sourced from the AMD website, and there's 
  
 Also keep in mind you are unlikely to be able to profit from mining with a card with less than or equal to 4GB VRAM available to it. If you try this container you will probably get a DAG generation error or an extremely low hash rate.
 
-### GPUs possibly compatible with **lnxd/phoenixminer:latest-20.45**:
+### GPUs possibly compatible with **lnxd/lolminer:latest-20.45**:
 * AMD Radeon™ RX 6900/6800 Series Graphics
 
 
-### GPUs possibly compatible with **lnxd/phoenixminer:latest-20.20**:
+### GPUs possibly compatible with **lnxd/lolminer:latest-20.20**:
 * AMD Radeon™ RX 5700/5600/5500 Series Graphics.
   - ```Confirmed working: 5500XT by lnxd```
 * AMD Radeon™ Pro W-series
@@ -80,7 +80,7 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 * AMD Radeon™ R9 360 Graphics
 
 
-### GPUs possibly compatible with **lnxd/phoenixminer:latest-18.20**:
+### GPUs possibly compatible with **lnxd/lolminer:latest-18.20**:
 * Radeon™ RX Vega Series Graphics
 * AMD Radeon™ Pro WX-series
 * Radeon™ Vega Frontier Edition
@@ -115,15 +115,15 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 
 
 #### **Q:** I have multiple GPUs, can I use this container?
-**A:** Yes! If you have multiple GPUs, and they are all listed in one table, go for that version. If you have multiple GPUs and they are on different tables, you can have multiple containers on different tags and use the `-gpus` flag in PhoenixMiner to set which container uses which GPU.
+**A:** Yes! If you have multiple GPUs, and they are all listed in one table, go for that version. If you have multiple GPUs and they are on different tables, you can have multiple containers on different tags and use the `-gpus` flag in lolminer to set which container uses which GPU.
 
 
 #### **Q:** What are the mining fees?
-**A:** There are none from me. The developer of PhoenixMiner charges 0.65%. This means that every 90 minutes the miner will mine for them for 35 seconds. The default pool, Ethermine, has a 1% fee and shares the transaction fees from the block. You can change to mine on any pool.
+**A:** There are none from me. The developer of lolminer charges 0.65%. This means that every 90 minutes the miner will mine for them for 35 seconds. The default pool, Ethermine, has a 1% fee and shares the transaction fees from the block. You can change to mine on any pool.
 
 
 #### **Q:** Why is my card still heating up if I've set a target temperature (`-tt`)?
-**A:** PhoenixMiner seems to still rely on the default fan curve, so unless you've optimised that for mining it's probably best to set a fixed fan speed by setting the `-tt` value to a negative, such as `-70` (fixed at 70% fan speed while PhoenixMiner is running). The lower you can safely set this, the slightly less power your rig will use and the less the affect mining will have on your GPU fan's lifespan.
+**A:** lolminer seems to still rely on the default fan curve, so unless you've optimised that for mining it's probably best to set a fixed fan speed by setting the `-tt` value to a negative, such as `-70` (fixed at 70% fan speed while lolminer is running). The lower you can safely set this, the slightly less power your rig will use and the less the affect mining will have on your GPU fan's lifespan.
 
 
 #### **Q:** Why am I getting such a low hash rate (eg. 2.5MH/s)?
@@ -135,11 +135,11 @@ Also keep in mind you are unlikely to be able to profit from mining with a card 
 
 
 #### **Q:** Does this also work with NVIDIA cards?
-**A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that **lnxd/phoenixminer:latest-20.45**, **lnxd/phoenixminer:latest-20.20** and **lnxd/phoenixminer:latest** work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
+**A:** Shh! Yes it does. I don't know enough about the NVIDIA drivers in Ubuntu yet to list a compatibility chart, but thanks to some testing by ich777 I have confirmation that **lnxd/lolminer:latest-20.45**, **lnxd/lolminer:latest-20.20** and **lnxd/lolminer:latest** work with a GTX1060 6GB. The same limitations with regards to VRAM apply as AMD cards, 4gb cards won't work.
 ​
 
 ​
-## Additional PhoenixMiner Arguments
+## Additional lolminer Arguments
 ```
 Phoenix Miner 5.5c Linux/gcc - Release build
 --------------------------------------------
