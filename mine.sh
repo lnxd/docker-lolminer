@@ -57,6 +57,11 @@ if [[ "${INSTALLED_DRIVERV}" != "${DRIVERV}" ]]; then
 		install_amd_driver "amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz" "https://drivers.amd.com/drivers/linux" "--opencl=legacy,pal --headless --no-dkms"
 		;;
 
+	20.40)
+		uninstall_amd_driver
+		install_amd_driver "amdgpu-pro-20.40-1147286-ubuntu-20.04.tar.xz" "https://drivers.amd.com/drivers/linux" "--opencl=legacy,pal --headless --no-dkms"
+		;;
+
 	20.45)
 		uninstall_amd_driver
 		install_amd_driver "amdgpu-pro-20.45-1188099-ubuntu-20.04.tar.xz" "https://drivers.amd.com/drivers/linux" "--opencl=legacy,pal --headless --no-dkms"
