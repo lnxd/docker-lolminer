@@ -25,11 +25,11 @@ install_amd_driver() {
 	rm -rf /tmp/opencl-driver-amd
 	echo ""
 	echo "Driver installation finished."
-	INSTALLED_DRIVERV=20.20
+	INSTALLED_DRIVERV=20.40
 	rm /etc/apt/apt.conf.d/90assumeyes
 }
 
-INSTALLED_DRIVERV=20.20
+INSTALLED_DRIVERV=20.40
 if [[ "${INSTALLED_DRIVERV}" != "${DRIVERV}" ]]; then
 	echo "Installed driver version (${INSTALLED_DRIVERV}) does not match wanted driver version (${DRIVERV})"
 	echo "Installing AMD drivers v${DRIVERV}:"

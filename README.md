@@ -2,7 +2,7 @@
 
 lolMiner binary source for this container is currently version 1.24a from [Github](https://github.com/lolminerDevTeam/lolminer/).
 
-It contains version 20.20 of the AMDGPU Pro Drivers direct from [AMD](https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-20)
+It contains version 20.40 of the AMDGPU Pro Drivers direct from [AMD](https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-40)
 
 
 
