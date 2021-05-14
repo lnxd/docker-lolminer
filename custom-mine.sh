@@ -47,11 +47,6 @@ if [[ "${INSTALLED_DRIVERV}" != "${DRIVERV}" ]]; then
 		install_amd_driver "amdgpu-pro-18.20-621984.tar.xz" "https://drivers.amd.com/drivers/linux/ubuntu-18-04" "--opencl=legacy,pal --headless"
 		;;
 
-	19.50)
-		uninstall_amd_driver
-		install_amd_driver "amdgpu-pro-19.50-967956-ubuntu-18.04.tar.xz" "https://drivers.amd.com/drivers/linux/19.50/" "--opencl=legacy,pal --headless"
-		;;
-
 	20.20)
 		uninstall_amd_driver
 		install_amd_driver "amdgpu-pro-20.20-1098277-ubuntu-20.04.tar.xz" "https://drivers.amd.com/drivers/linux" "--opencl=legacy,pal --headless --no-dkms"
@@ -79,12 +74,17 @@ echo "Author:  lnxd"
 echo "Base:    $BASE"
 echo "Driver:  $INSTALLED_DRIVERV"
 echo "Target:  Unraid 6.9.0 - 6.9.2"
-echo ""
-echo "Wallet:  $WALLET"
-echo "Pool:    $POOL"
-echo ""
+echo
+echo "+---- WARNING ---- WARNING ---- WARNING ---- WARNING ---- WARNING ----"
+echo "| You are running PhoenixMiner in custom mode!"
+echo "| Please make sure that you entered all necessary values correctly and"
+echo "| that you have set a temperature limit for your graphics card!"
+echo "+---- WARNING ---- WARNING ---- WARNING ---- WARNING ---- WARNING ----"
+echo
+echo "Custom command:  $ADDITONAL"
+echo
 echo "Starting lolMiner $MINERV as $(id) with the following arguments:"
-echo "--algo $ALGO --pool $POOL --user $WALLET --pass $PASSWORD $ADDITIONAL"
-echo ""
+echo "$ADDITIONAL"
+echo
 cd /home/docker/lolminer
-./lolMiner --algo $ALGO --pool $POOL --user $WALLET --pass $PASSWORD $ADDITIONAL
+./lolMiner $ADDITIONAL
