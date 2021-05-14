@@ -36,11 +36,11 @@ RUN echo 'APT::Get::Assume-Yes "true";'>> /etc/apt/apt.conf.d/90assumeyes; \
     rm /etc/apt/apt.conf.d/90assumeyes;
 
 # Get lolMiner
-ENV MINERV=1.24a
+ENV MINERV=1.28a
 ENV MINERV=$MINERV
-RUN curl "https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.24/lolMiner_v1.24a_Lin64.tar.gz" -L -o "lolMiner_v1.24a_Lin64.tar.gz"; \
-    tar xvzf lolMiner_v1.24a_Lin64.tar.gz -C /home/docker; \
-    mv "/home/docker/1.24a/" "/home/docker/lolminer"; \
+RUN curl "https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.28/lolMiner_v${MINERV}_Lin64.tar.gz" -L -o "lolMiner_v${MINERV}_Lin64.tar.gz"; \
+    tar xvzf lolMiner_v${MINERV}_Lin64.tar.gz -C /home/docker; \
+    mv "/home/docker/${MINERV}/" "/home/docker/lolminer"; \
     sudo chmod +x /home/docker/lolminer/lolMiner;
 
 # Copy latest scripts
@@ -51,7 +51,7 @@ RUN sudo chmod +x /home/docker/start.sh; \
 
 # Set environment variables.
 ENV BASE="Ubuntu 20.04"
-ENV DRIVERV="20.20"
+ENV DRIVERV="20.40"
 ENV PATH=$PATH:/home/docker/lolminer
 ENV HOME="/home/docker"
 ENV POOL="asia1.ethermine.org:4444"
